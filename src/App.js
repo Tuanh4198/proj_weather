@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// useEffect
+import React, { useState,useEffect } from 'react';
 import './App.css';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchWeather } from "./redux/actions/fetchWeather";
@@ -7,12 +6,15 @@ import data from "./state.json";
 
 function App() {
   const [city, setCity] = useState("");
-        // [state, setState] = useState("");
 
   const weatherSelector = useSelector((state) => state.weatherinfor);
 
   const dispatch = useDispatch();
-  const getWeatherInfoAction = (city) => dispatch(fetchWeather(city));  
+  const getWeatherInfoAction = (city) => dispatch(fetchWeather(city));
+  
+  useEffect(() => {
+    getWeatherInfoAction("1581129")
+  }, [])
 
   const getWeatherInfor = (e) => {
     e.preventDefault();
